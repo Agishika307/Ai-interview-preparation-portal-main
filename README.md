@@ -179,4 +179,4 @@ This project is developed for educational and learning purposes.
 * The open-source community for the tools and libraries that made this project possible.
 
 ---
-
+⭐ **If you found this project useful, consider giving it a Star!**
