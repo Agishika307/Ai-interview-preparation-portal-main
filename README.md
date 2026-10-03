@@ -28,8 +28,15 @@ The AI Interview Portal is designed to help students and job seekers improve the
 
 * React.js
 * JavaScript (ES6+)
-* HTML5
-* CSS3
+* HTML5 / CSS3
+* Vite
+
+### Backend
+
+* Node.js & Express.js
+* MongoDB & Mongoose
+* JSON Web Tokens (JWT) for authentication
+* Bcrypt.js for secure password hashing
 
 ### AI Integration
 
@@ -81,22 +88,43 @@ cd AI-Interview-Portal
 
 ### Install dependencies
 
+1. Install Frontend dependencies:
 ```bash
 npm install
 ```
 
-### Configure Environment Variables
-
-Create a `.env` file in the project root and add:
-
-```env
-VITE_GEMINI_API_KEY=your_api_key_here
+2. Install Backend dependencies:
+```bash
+cd server
+npm install
+cd ..
 ```
 
-> **Do not commit your API key to GitHub.** Add `.env` to your `.gitignore`.
+### Configure Environment Variables
 
-### Start the development server
+1. Frontend `.env` in the project root:
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
 
+2. Backend `.env` in the `server/` directory:
+```env
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+JWT_SECRET=your_jwt_secret_key
+```
+
+> **MongoDB Atlas Note**: Ensure your current IP is whitelisted in MongoDB Atlas under **Network Access** -> **Add IP Address** -> **Allow Access from Anywhere (`0.0.0.0/0`)**.
+
+### Start the Application
+
+1. **Start Backend Server** (Port 5000):
+```bash
+npm run server
+# or: cd server && npm start
+```
+
+2. **Start Frontend Development Server** (Port 5173):
 ```bash
 npm run dev
 ```

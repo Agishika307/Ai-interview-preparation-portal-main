@@ -5,10 +5,16 @@ import { FaUserCircle } from "react-icons/fa";
 function Navbar() {
     const [user, setUser] = useState(null);
 
-useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    setUser(loggedInUser);
-}, []);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("loggedInUser");
+      if (raw && raw !== "undefined") {
+        setUser(JSON.parse(raw));
+      }
+    } catch (err) {
+      console.error("Failed to parse user in Navbar:", err);
+    }
+  }, []);
 
     return (
 

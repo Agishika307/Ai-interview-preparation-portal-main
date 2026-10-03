@@ -2,15 +2,22 @@ import { useEffect, useState } from "react";
 function Sidebar({ setLogin, setPage }) {
     const [user, setUser] = useState(null);
 
-useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    setUser(loggedInUser);
-}, []);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("loggedInUser");
+      if (raw && raw !== "undefined") {
+        setUser(JSON.parse(raw));
+      }
+    } catch (err) {
+      console.error("Failed to parse user in Sidebar:", err);
+    }
+  }, []);
 
    const logout = () => {
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("token");
     setLogin(false);
-};
+  };
 
     return (
 

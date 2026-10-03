@@ -15,7 +15,14 @@ function App() {
 const [selectedRole, setSelectedRole] = useState("");
 const [experience, setExperience] = useState("");
 const [resumeText, setResumeText] = useState("");
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(() => {
+    try {
+      const stored = localStorage.getItem("loggedInUser");
+      return Boolean(stored && stored !== "undefined" && stored !== "null");
+    } catch {
+      return false;
+    }
+  });
   const [isRegister, setIsRegister] = useState(false);
 const [answers, setAnswers] = useState([]);
 const [result, setResult] = useState(null);
